@@ -10,7 +10,6 @@ $(document).ready(function(){
 			console.log("minutely", data.minutely)
 			var rainData = data.minutely.data
 			console.log("rainData", rainData)
-			// console.log("precip", data)
 			var timeLeft = 0;
       		var run = false;
 
@@ -30,31 +29,30 @@ $(document).ready(function(){
       		}
       			
       		  google.charts.load('44', {
- 			 //callback: drawBackgroundColor,
- 			 callback: function () { 
- 			 	var c = []
-	for(var i = 0; i < rainData.length; i++){
-		c[i] = [new Date(rainData[i].time), rainData[i].precipProbability];
-	}
+ 			  callback: function () { 
+ 			var c = []
+			for(var i = 0; i < rainData.length; i++){
+				c[i] = [new Date(rainData[i].time * 1000), rainData[i].precipProbability];
+			}
 
-  var data = new google.visualization.DataTable();
-  data.addColumn('date', 'Date');
-  data.addColumn('number', 'Probability');
+  			var data = new google.visualization.DataTable();
+  			data.addColumn('date', 'Date');
+  			data.addColumn('number', 'Probability');
 
-  data.addRows(c);
+  			data.addRows(c);
 
-  var options = {
-    hAxis: {
-      title: 'Time'
-    },
-    vAxis: {
-      title: 'Probability'
-    },
-    backgroundColor: '#f1f8e9'
-  };
+  			var options = {
+    			hAxis: {
+      			title: 'Time'
+    		},
+    			vAxis: {
+      			title: 'Probability'
+    		},
+    			backgroundColor: '#f1f8e9'
+  			};
 
-  var chart = new google.visualization.LineChart(document.getElementById('yo'));
-  chart.draw(data, options);
+  			var chart = new google.visualization.LineChart(document.getElementById('yo'));
+  			chart.draw(data, options);
  			 }, 
 			  packages: ['corechart']
 				});
