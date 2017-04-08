@@ -1,0 +1,57 @@
+<!DOCTYPE html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Stop The Rain</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<center>
+<div class="container-fluid" id='centerfold'>
+  <h1 style="color:white; font-size:10vw;" id ='sentence'>The <span id='percipitation'>Snow</span> Will Stop in</h1>
+  <div class = "row">
+
+  <div class="col-md-6">
+  <h1 style="color:white; font-size:45vh;" id='minutes left'>5</h1>
+    <h1 style="color:white; font-size:10vw;">Minutes</h1>
+  </div>
+  <div class="col-md-6">
+  <img src="./res/snowing.png" id='weathericon'>
+  </div>
+
+  </div>
+
+
+
+</div>
+</center>
+
+
+
+
+
+</body>
+<script type="text/javascript">
+var weather = "Sunny"; 
+if(weather == "Snow"){
+  document.body.style.backgroundColor = "lightblue";
+  document.getElementById("percipitation").innerHTML = "Snow";
+  document.getElementById("weathericon").src =  "res/Snowing.png";
+} else if (weather == "Rain"){
+  document.body.style.backgroundColor = "#6B7F98";
+  document.getElementById("percipitation").innerHTML = "Rain";
+  document.getElementById("weathericon").src =  "res/rain.png";
+
+}else if(weather == "Sunny"){
+  document.body.style.backgroundColor = "#FFA500";
+  document.getElementById("sentence").innerHTML = "It is Sunny";
+   document.getElementById("weathericon").src =  "res/Sunny.png";
+}
+</script>
+</html>
