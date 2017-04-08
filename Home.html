@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,18 +55,23 @@
 
 </body>
 <script type="text/javascript">
-var weather = "Sunny"; 
+var audio = new Audio('rain.mp3');
+myAudio.addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play();
+}, false);
+myAudio.play();
+var weather = "Rain"; 
 if(weather == "Snow"){
-  document.body.style.backgroundColor = "lightblue";
+  //document.body.style.backgroundColor = "lightblue";
   document.getElementById("percipitation").innerHTML = "Snow";
   document.getElementById("weathericon").src =  "res/Snowing.png";
 } else if (weather == "Rain"){
-  document.body.style.backgroundColor = "#6B7F98";
+  //document.body.style.backgroundColor = "#6B7F98";
   document.getElementById("percipitation").innerHTML = "Rain";
   document.getElementById("weathericon").src =  "res/rain.png";
-
 }else if(weather == "Sunny"){
-  document.body.style.backgroundColor = "#FFA500";
+  //document.body.style.backgroundColor = "#FFA500";
   document.getElementById("sentence").innerHTML = "It is Sunny";
    document.getElementById("weathericon").src =  "res/Sunny.png";
    document.getElementById("centerf").remove();
@@ -91,17 +95,3 @@ img.src = "res/Sunny.png";
             }
         </script>
 </html>
-=======
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title></title>
-</head>
-<body>
-	<div>Stop Rain</div>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="weather.js"></script>
-</body>
-</html>
->>>>>>> origin/master
