@@ -8,6 +8,11 @@ $(document).ready(function(){
 		 dataType: 'jsonp',
 		success: function(data){ 
 			console.log(data) ;
+			console.log("minutely", data.minutely)
+			var rainData = data.minutely.data
+			console.log("rainData", rainData)
+			// console.log("precip", data)
+
  			}
  		}); 
 
