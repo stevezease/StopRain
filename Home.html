@@ -56,11 +56,11 @@
 </body>
 <script type="text/javascript">
 var audio = new Audio('rain.mp3');
-myAudio.addEventListener('ended', function() {
+audio.addEventListener('ended', function() {
     this.currentTime = 0;
     this.play();
 }, false);
-myAudio.play();
+audio.play();
 var weather = "Rain"; 
 if(weather == "Snow"){
   //document.body.style.backgroundColor = "lightblue";
