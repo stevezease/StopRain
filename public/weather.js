@@ -1,6 +1,54 @@
 
 $(document).ready(function(){
 	console.log("jquery")
+/// location based functions
+var latitude = ""
+var longitude =""
+
+
+function getLocation(){
+	console.log("location lookup")
+	var zip = 13078
+	var address ="1600+Amphitheatre+Parkway,+Mountain+View,+CA"
+	var mapsKey = "AIzaSyDPgJc7v3TwguI2hVqvSZVf9D32Y0e52rE"
+	$.ajax({
+		url: "https://maps.googleapis.com/maps/api/geocode/json?address=" + zip + "&key=" + mapsKey,
+		crossDomain: true,
+		 // dataType: 'jsonp',
+		success: function(data){ 
+			console.log(data) ;
+			// var data = JSON.parse(data)
+			var coords = data.results[0].geometry.location
+			console.log(coords)
+			latitude =  coords.lat
+			longitude = coords .lng
+ 			}
+ 		}); 
+
+} 
+
+function getImage(){
+	console.log("image lookup")
+	var mapsKey = "AIzaSyB1qwEi2o-kXL5flzPkNHuKGScWi8xifS4"
+	$.ajax({
+		url: "https://maps.googleapis.com/maps/api/streetview?size=400x400&location=" + latitude + "," + longitude + 
+			"&fov=90&heading=235&pitch=10&key=" + 
+			mapsKey,
+		crossDomain: true,
+		 // dataType: 'jsonp',
+		success: function(data){ 
+			console.log("image succes") ;
+			
+ 			}
+ 		});
+}
+
+getLocation()
+
+getImage() 
+
+//end location and image functions
+
   $.ajax({
 		url: "https://api.darksky.net/forecast/421cc13604c01e8ea018b8bcd92b08e8/45.512794,-122.679565",
 		crossDomain: true,
