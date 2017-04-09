@@ -12,96 +12,98 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
- <style media="screen">
-            body {
-                overflow: hidden;
-                height: 100%;
-                margin: 0;
-                padding: 0;
-            }
+<style media="screen">
+  body {
+    overflow: hidden;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
 
-            img {
-                width: 100%;
-                height: 100%;
-            }
-  </style>
+  #background{
+    min-width: 100%;
+    height: 100%;
+    min-height:100vh;
+  }
+</style>
 <body>
 
  <img id="background" src="syracuse.jpg" onload="loaded_image(this)" />
- </div>
-<center>
-<div class="container-fluid" style="position: absolute; z-index: 1; left: 50px; top: 20px; width:100px; height:20px;" id='centerfold'>
-  <h1 style="color:white; font-size:10vw;" id ='sentence'>The <span id='percipitation'>Snow</span> Will Stop in</h1>
-  <div class = "row" id='centerf'>
-
-  <div class="col-xs-6" >
-  <h1 style="color:white; font-size:45vh;" id='minutes left'>5</h1>
-    <h1 style="color:white; font-size:10vw;">Minutes</h1>
-  </div>
-   <center>
-  <div class="col-xs-6" >
-
-  <img src="./res/snowing.png" id='weathericon'>
-
-  </div>
-  </center>
-  </div>
 </div>
+<center>
+
+  <div class="container-fluid" style="position: absolute; z-index: 1; left: 0vw; top: 20px; width:100vw;" id='centerfold'>
+    <h1 style="color:white; font-size:10vw;" id ='sentence'>The <span id='percipitation'>Snow</span> Will Stop in</h1>
+    <div class = "row" id='centerf'>
+
+      <div class="col-xs-6" >
+        <h1 style="color:white; font-size:45vh;" id='minutes left'>5</h1>
+        <h1 style="color:white; font-size:10vw;">Minutes</h1>
+      </div>
+      <center>
+        <div class="col-xs-6" >
+
+          <img src="./res/snowing.png" id='weathericon'>
+
+        </div>
+      </center>
+    </div>
+  </div>
 </center>
- <div id="myCanvas" >
+<div id="myCanvas" >
 </body>
 <script>
-       
-            function loaded_image(img)
-            {
-                var engine = new RainyDay({image: img});
-                    engine.rain([ [1, 2, 8000] ]);
-                    engine.rain([ [3, 3, 0.88], [5, 5, 0.9], [6, 2, 1] ], 100);
-            }
 
-            function determineWeather() {
+  function loaded_image(img)
+  {
+    var engine = new RainyDay({image: img});
+    engine.rain([ [1, 2, 8000] ]);
+    engine.rain([ [3, 3, 0.88], [5, 5, 0.9], [6, 2, 1] ], 100);
+  }
 
-            		var weather = "Sunny"; 
-if(weather == "Snow"){
-  document.body.style.backgroundColor = "lightblue";
-  document.getElementById("percipitation").innerHTML = "Snow";
-  document.getElementById("weathericon").src =  "res/Snowing.png";
-} else if (weather == "Rain"){
-  document.body.style.backgroundColor = "#6B7F98";
-  document.getElementById("percipitation").innerHTML = "Rain";
-  document.getElementById("weathericon").src =  "res/rain.png";
+  function determineWeather() {
 
-}else if(weather == "Sunny"){
-  document.body.style.backgroundColor = "#FFA500";
-  document.getElementById("sentence").innerHTML = "It is Sunny";
-   document.getElementById("weathericon").src =  "res/Sunny.png";
-   document.getElementById("centerf").remove();
-   var img = new Image();
+    var weather = "Rain"; 
+    if(weather == "Snow"){
+      document.body.style.backgroundColor = "lightblue";
+      document.getElementById("percipitation").innerHTML = "Snow";
+      document.getElementById("weathericon").src =  "res/Snowing.png";
+    } else if (weather == "Rain"){
+      document.body.style.backgroundColor = "#6B7F98";
+      document.getElementById("percipitation").innerHTML = "Rain";
+      document.getElementById("weathericon").src =  "res/rain.png";
 
-img.onload = function() {
-   document.getElementById("centerfold").appendChild(img);
-};
+    }else if(weather == "Sunny"){
+      document.body.style.backgroundColor = "#FFA500";
+      document.getElementById("sentence").innerHTML = "It is Sunny";
+      document.getElementById("weathericon").src =  "res/Sunny.png";
+      document.getElementById("centerf").remove();
+      var img = new Image();
 
-img.src = "res/Sunny.png";
- img.style.width= '40vw';
-}
+      img.onload = function() {
+       document.getElementById("centerfold").appendChild(img);
+     };
+
+     img.src = "res/Sunny.png";
+     img.style.width= '40vw';
+   }
 
 
-            }
-      
-        
-        </script>
-<script type="text/javascript">
-var audio = new Audio('rain.mp3');
-audio.addEventListener('ended', function() {
-    this.currentTime = 0;
-    this.play();
-}, false);
+ }
 
-audio.play();
-determineWeather() ; 
 
 </script>
- <script src="rainday.js"></script>
-        
+<script type="text/javascript">
+  var audio = new Audio('rain.mp3');
+  audio.addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play();
+  }, false);
+
+  audio.play();
+  determineWeather() ; 
+
+</script>
+<script src="rainday.js"></script>
+
 </html>
