@@ -102,8 +102,8 @@ function getMinutes(){
 	var rainData;
 	$.ajax({
 
-		url: "https://api.darksky.net/forecast/421cc13604c01e8ea018b8bcd92b08e8/"+latitude+","+longitude,
-		//url: "https://api.darksky.net/forecast/5b7567002e4c065a19cca5fc70b371c5/56.8198,-5.1052",
+		//url: "https://api.darksky.net/forecast/421cc13604c01e8ea018b8bcd92b08e8/"+latitude+","+longitude,
+		url: "https://api.darksky.net/forecast/5b7567002e4c065a19cca5fc70b371c5/56.8198,-5.1052",
 		crossDomain: true,
 		 dataType: 'jsonp',
 		success: function(data){ 
