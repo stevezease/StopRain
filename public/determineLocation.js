@@ -127,7 +127,7 @@ function getMinutes(){
          		if(rainData[0].precipIntensity < .1){
             		/*insert code to let user know to run*/
             		run = true;
-            		alert("RUN");
+            		// alert("RUN");
          		}
       		}
 
