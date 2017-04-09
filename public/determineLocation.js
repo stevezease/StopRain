@@ -28,7 +28,7 @@ var geocoder = new google.maps.Geocoder;
       if (results[1]) {
        
        //alert(results[1].formatted_address) ; 
-       $('#locationInfo').html(results[1].formatted_address);  
+       $('#locationInfo').html(results[0].formatted_address);  
       } else {
         window.alert('We could not determine your location');
       }
