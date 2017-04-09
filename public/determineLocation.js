@@ -118,6 +118,8 @@ function getMinutes(){
                			break;   
             		}
          		}
+         		if(timeLeft == 0)
+         			timeLeft = 60;
          		if(rainData[0].precipIntensity < .1){
             		/*insert code to let user know to run*/
             		run = true;
