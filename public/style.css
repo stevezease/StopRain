@@ -2,14 +2,22 @@ body {
     background-color: lightblue;
     font-family: 'Lobster', cursive;
     font-color:white;
+
 }
 #centerfold{
-margin-top: 5vh;
+
 }
 #weathericon{
  margin-top: 8vh;
  width: 40vw;
+ opacity: 0.70;
 
+}
+p{
+	 opacity: 0.70;
+}
+h1{
+	 opacity: 0.70;
 }
 
 }
