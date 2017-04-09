@@ -22,30 +22,36 @@ function getLocation(){
 			console.log(coords)
 			latitude =  coords.lat
 			longitude = coords .lng
+ 			getImage()
+
  			}
  		}); 
 
 } 
 
 function getImage(){
-	console.log("image lookup")
 	var mapsKey = "AIzaSyB1qwEi2o-kXL5flzPkNHuKGScWi8xifS4"
 	$.ajax({
-		url: "https://maps.googleapis.com/maps/api/streetview?size=400x400&location=" + latitude + "," + longitude + 
+		url: "https://maps.googleapis.com/maps/api/streetview/metadata?size=400x400&location=" + latitude + "," + longitude + 
 			"&fov=90&heading=235&pitch=10&key=" + 
 			mapsKey,
 		crossDomain: true,
 		 // dataType: 'jsonp',
 		success: function(data){ 
-			console.log("image succes") ;
-			
- 			}
- 		});
+			if(data.status != "ZERO_RESULTS"){
+				 	 $('#image-container').append("<img src='"+"https://maps.googleapis.com/maps/api/streetview?size=400x400&location=" + latitude + "," + longitude + 
+				 	 	"&fov=90&heading=235&pitch=10&key=" + 
+				 	 	mapsKey+"' />");
+				// var image = data// console.log(data)
+			} else {
+					//load a default image
+			}
+ 		}
+ 	});	
 }
 
-getLocation()
+// getLocation()
 
-getImage() 
 
 //end location and image functions
 
