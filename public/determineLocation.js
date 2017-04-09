@@ -91,4 +91,52 @@ function getImage(){
  		}
  	});	
 }
+var a;
+var b; 
+function getMinutes(){
+	var timeLeft;
+	var rainData;
+	$.ajax({
 
+		//url: "https://api.darksky.net/forecast/421cc13604c01e8ea018b8bcd92b08e8/"+latitude+","+longitude,
+		url: "https://api.darksky.net/forecast/5b7567002e4c065a19cca5fc70b371c5/37.8267,-122.4233",
+		crossDomain: true,
+		 dataType: 'jsonp',
+		success: function(data){ 
+			console.log(data) ;
+			console.log("minutely", data.minutely)
+			rainData = data.minutely.data
+			console.log("rainData", rainData)
+			timeLeft = 0;
+      		var run = false;
+
+      		/*It's currently raining so find how much longer it will rain*/
+      		if(rainData[0].hasOwnProperty("precipType")){
+         		for (var i = 1 ; i < rainData.length ; i++) {
+            		if(rainData[i].precipProbability < .3){
+               			timeLeft = i;
+               			break;   
+            		}
+         		}
+         		if(rainData[0].precipIntensity < .1){
+            		/*insert code to let user know to run*/
+            		run = true;
+            		alert("RUN");
+         		}
+      		}
+
+
+      		/*display the time left until rain stops*/
+      		console.log(latitude);
+		    console.log(longitude);
+		    console.log("https://api.darksky.net/forecast/421cc13604c01e8ea018b8bcd92b08e8/"+latitude+","+longitude);
+      		console.log(timeLeft);
+      		console.log(rainData[0].hasOwnProperty("precipType"));
+      		a = timeLeft;
+      		b = rainData[0].hasOwnProperty("precipType");
+ 		}
+ 	});
+}
+function ajaxreturn(){
+	return [a,b];
+}
