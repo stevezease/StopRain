@@ -142,3 +142,32 @@ function getMinutes(){
 function ajaxreturn(){
 	return [a,b];
 }
+
+function determineWeather() {
+    getMinutes(); 
+    var ans = ajaxreturn();
+    var minutes  = ans[0];
+
+    if (minutes == undefined)
+      minutes = 0;
+    var Rain = ans[1]; 
+    if (Rain){
+      document.body.style.backgroundColor = "#6B7F98";
+      document.getElementById("percipitation").innerHTML = "Rain";
+      document.getElementById("weathericon").src =  "res/rain.png";
+
+    }else {
+      document.body.style.backgroundColor = "#FFA500";
+      document.getElementById("sentence").innerHTML = "Not Currently Raining";
+      document.getElementById("weathericon").src =  "res/Sunny.png";
+      document.getElementById("centerf").remove();
+      document.getElementsByTagName("canvas")[0].remove();
+      /*var img = new Image();
+
+      img.onload = function() {
+       document.getElementById("centerfold").appendChild(img);
+     };
+
+     img.src = "res/Sunny.png";
+     img.style.width= '40vw';*/
+   }}
