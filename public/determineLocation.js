@@ -92,3 +92,39 @@ function getImage(){
  	});	
 }
 
+function getMinutes(){
+	$.ajax({
+		url: "https://api.darksky.net/forecast/421cc13604c01e8ea018b8bcd92b08e8/"+"latitude"+","+"longitude",
+		crossDomain: true,
+		 dataType: 'jsonp',
+		success: function(data){ 
+			console.log(data) ;
+			console.log("minutely", data.minutely)
+			var rainData = data.minutely.data
+			console.log("rainData", rainData)
+			var timeLeft = 0;
+      		var run = false;
+
+      		/*It's currently raining so find how much longer it will rain*/
+      		if(rainData[0].hasOwnProperty("precipType")){
+         		for (var i = 1 ; i < rainData.length ; i++) {
+            		if(rainData[i].precipProbability < .3){
+               			timeLeft = i;
+               			break;   
+            		}
+         		}
+         		if(rainData[0].precipIntensity < .1){
+            		/*insert code to let user know to run*/
+            		run = true;
+            		alert("RUN");
+         		}
+      		}
+
+
+      		/*display the time left until rain stops*/
+      		console.log(timeLeft);
+      		console.log(rainData[0].hasOwnProperty("precipType"));
+      		return [timeLeft, rainData[0].hasOwnProperty("precipType")];
+ 		}
+ 	});
+}
