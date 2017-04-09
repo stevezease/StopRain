@@ -29,6 +29,7 @@ var geocoder = new google.maps.Geocoder;
        
        //alert(results[1].formatted_address) ; 
        $('#locationInfo').html(results[0].formatted_address);  
+        getMinutes();
       } else {
         window.alert('We could not determine your location');
       }
@@ -85,12 +86,15 @@ function getImage(){
 				 //	 	"&fov=90&heading=235&pitch=10&key=" + 
 				// 	 	mapsKey+"' />");
 				// var image = data// console.log(data)
+				getMinutes();
 			} else {
 					//load a default image
 			}
  		}
  	});	
+ 
 }
+
 var a;
 var b; 
 function getMinutes(){
@@ -99,7 +103,7 @@ function getMinutes(){
 	$.ajax({
 
 		//url: "https://api.darksky.net/forecast/421cc13604c01e8ea018b8bcd92b08e8/"+latitude+","+longitude,
-		url: "https://api.darksky.net/forecast/5b7567002e4c065a19cca5fc70b371c5/37.8267,-122.4233",
+		url: "https://api.darksky.net/forecast/5b7567002e4c065a19cca5fc70b371c5/56.8198,-5.1052",
 		crossDomain: true,
 		 dataType: 'jsonp',
 		success: function(data){ 
@@ -118,6 +122,8 @@ function getMinutes(){
                			break;   
             		}
          		}
+         		if(timeLeft == 0)
+         			timeLeft = 60;
          		if(rainData[0].precipIntensity < .1){
             		/*insert code to let user know to run*/
             		run = true;
@@ -127,16 +133,53 @@ function getMinutes(){
 
 
       		/*display the time left until rain stops*/
-      		console.log(latitude);
-		    console.log(longitude);
-		    console.log("https://api.darksky.net/forecast/421cc13604c01e8ea018b8bcd92b08e8/"+latitude+","+longitude);
+      		//console.log(latitude);
+		    //console.log(longitude);
+		    //console.log("https://api.darksky.net/forecast/421cc13604c01e8ea018b8bcd92b08e8/"+latitude+","+longitude);
       		console.log(timeLeft);
       		console.log(rainData[0].hasOwnProperty("precipType"));
       		a = timeLeft;
       		b = rainData[0].hasOwnProperty("precipType");
+      		determineWeather()
  		}
  	});
 }
 function ajaxreturn(){
+	console.log("ajax:" + a + "," + b);
 	return [a,b];
 }
+
+function determineWeather() {
+
+    var ans = ajaxreturn();
+    var minutes  = ans[0];
+
+    if (minutes == undefined)
+      minutes = 0;
+    var Rain = true;
+    Rain = ans[1]; 
+    if (Rain){
+      document.body.style.backgroundColor = "#6B7F98";
+      document.getElementById("percipitation").innerHTML = "Rain";
+      document.getElementById("weathericon").src =  "res/rain.png";
+
+    }else {
+      document.body.style.backgroundColor = "#FFA500";
+      document.getElementById("sentence").innerHTML = "Not Currently Raining";
+      document.getElementById("weathericon").src =  "res/Sunny.png";
+      document.getElementById("centerf").remove();
+      document.getElementsByTagName("canvas")[0].remove();
+      document.getElementById("minutesleft").innerHTML = minutes;
+
+ 
+
+
+      /*var img = new Image();
+
+      img.onload = function() {
+       document.getElementById("centerfold").appendChild(img);
+     };
+
+     img.src = "res/Sunny.png";
+     img.style.width= '40vw';*/
+   }}

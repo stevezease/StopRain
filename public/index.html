@@ -13,45 +13,7 @@
 	<script src="rainday.js"></script>
 		  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCM6tj7ueoIAupba0D-8aTrukUjwEBzqhQ" > </script>
 	<script src="determineLocation.js"></script>
-<script>
 
-	function loaded_image(img)
-	{
-		$('canvas').remove() ;
-		img.crossOrigin="anonymous";	
-		var engine = new RainyDay({image: img});
-		engine.rain([ [1, 2, 8000] ]);
-		engine.rain([ [3, 3, 0.88], [5, 5, 0.9], [6, 2, 1] ], 100);
-	}
-
-  function determineWeather() {
-
-    var Rain = true; 
-    if (Rain){
-      document.body.style.backgroundColor = "#6B7F98";
-      document.getElementById("percipitation").innerHTML = "Rain";
-      document.getElementById("weathericon").src =  "res/rain.png";
-
-    }else {
-      document.body.style.backgroundColor = "#FFA500";
-      document.getElementById("sentence").innerHTML = "It's Not Raining";
-      document.getElementById("weathericon").src =  "res/Sunny.png";
-      document.getElementById("centerf").remove();
-      var img = new Image();
-
-      img.onload = function() {
-       document.getElementById("centerfold").appendChild(img);
-     };
-
-     img.src = "res/Sunny.png";
-     img.style.width= '40vw';
-   }
-
-
- }
-
-
-</script>
 </head>
 
 <style media="screen">
@@ -78,8 +40,8 @@
 <div class="col-xs-1" >
 </div>
       <div class="col-xs-5" >
-        <h1 style="color:white; font-size:10vw; right:0; margin:0px;" id='minutesleft'>5</h1>
-        <h1 style="color:white; font-size:13vh;">Minutes</h1>
+        <h1 style="color:white; font-size:15vw; right:0; margin:0px;" id='minutesleft'>5</h1>
+        <h1 style="color:white; font-size:10vw;">Minutes</h1>
       </div>
       <center>
         <div class="col-xs-5" >
@@ -183,10 +145,9 @@
      img.style.width= '40vw';*/
    }
 
-
 document.getElementById("minutesleft").innerHTML = minutes;
 
- }
+ 
 
 
 </script>
@@ -198,7 +159,7 @@ document.getElementById("minutesleft").innerHTML = minutes;
 	}, false);
 
 	audio.play();
-	determineWeather() ; 
+	getMinutes() ; 
 
 	$('#changeAddress').on('click' , function() { 
 		getLocation(); 
