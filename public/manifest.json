@@ -1,0 +1,7 @@
+{
+  "short_name": "Stop Rain",
+  "name": "App to predict when the rain will stop",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "orientation": "landscape"
+}

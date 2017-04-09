@@ -2,8 +2,13 @@
 $(document).ready(function(){
 	console.log("jquery")
 /// location based functions
-var latitude = ""
-var longitude =""
+var latitude = "" ;
+var longitude = "" ;
+
+getLocation();
+
+getImage() ;
+
 
 
 function getLocation(){
@@ -50,8 +55,11 @@ function getImage(){
  	});	
 }
 
+<<<<<<< HEAD
 // getLocation()
 
+=======
+>>>>>>> 3e329cb679fb5f85e5f36b5d5d816a5a438697e1
 
 //end location and image functions
 
