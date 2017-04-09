@@ -1,5 +1,5 @@
 
-	 
+
 	 navigator.geolocation.getCurrentPosition(function (position) {
 
 	 //alert(position.coords.latitude) ;
@@ -9,7 +9,7 @@
 	  var lon = position.coords.longitude;
 	 //map.setCenter(initialLocation);
 	 geocodeLatLng(geocoder , lon , lat ) ; 
-	 } ,	 alert('failed to load location')
+	 } 	
 	 );
 	
 
@@ -33,3 +33,13 @@
 
 
  	}
+
+
+$(document).ready(function(){
+
+ 	$('#changeLocation').on('click', function ()   { 
+
+ 		alert('test'); 
+ 	} ) ; 
+
+ }); 
