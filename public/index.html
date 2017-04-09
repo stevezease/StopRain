@@ -15,7 +15,24 @@
 	<script src="determineLocation.js"></script>
 
 </head>
+<script>
 
+  function loaded_image(img)
+  {
+    $('canvas').remove() ;
+    img.crossOrigin="anonymous";  
+    var engine = new RainyDay({image: img});
+    engine.rain([ [1, 2, 8000] ]);
+    engine.rain([ [3, 3, 0.88], [5, 5, 0.9], [6, 2, 1] ], 100);
+  }
+
+
+document.getElementById("minutesleft").innerHTML = minutes;
+
+ 
+
+
+</script>
 <style media="screen">
 	body {
 		overflow: hidden;
@@ -37,8 +54,8 @@
   <div class="container-fluid" style="position: absolute; z-index: 1; left: 6vw; top: 10px; width:100vw;" id='centerfold'>
     <h1 style="color:white; font-size:10vw;  margin:0px;" id ='sentence'>The <span id='percipitation'>Snow</span> Will Stop in</h1>
     <div class = "row" id='centerf'>
-<div class="col-xs-1" >
-</div>
+      <div class="col-xs-1" >
+      </div>
       <div class="col-xs-5" >
         <h1 style="color:white; font-size:15vw; right:0; margin:0px;" id='minutesleft'>5</h1>
         <h1 style="color:white; font-size:10vw;">Minutes</h1>
@@ -105,24 +122,7 @@
 
 
 </body>
-<script>
 
-	function loaded_image(img)
-	{
-		$('canvas').remove() ;
-		img.crossOrigin="anonymous";	
-		var engine = new RainyDay({image: img});
-		engine.rain([ [1, 2, 8000] ]);
-		engine.rain([ [3, 3, 0.88], [5, 5, 0.9], [6, 2, 1] ], 100);
-	}
-
-
-document.getElementById("minutesleft").innerHTML = minutes;
-
- 
-
-
-</script>
 <script type="text/javascript">
 	var audio = new Audio('rain.mp3');
 	audio.addEventListener('ended', function() {

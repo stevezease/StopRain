@@ -102,8 +102,8 @@ function getMinutes(){
 	var rainData;
 	$.ajax({
 
-		//url: "https://api.darksky.net/forecast/421cc13604c01e8ea018b8bcd92b08e8/"+latitude+","+longitude,
-		url: "https://api.darksky.net/forecast/5b7567002e4c065a19cca5fc70b371c5/56.8198,-5.1052",
+		url: "https://api.darksky.net/forecast/421cc13604c01e8ea018b8bcd92b08e8/"+latitude+","+longitude,
+		// url: "https://api.darksky.net/forecast/5b7567002e4c065a19cca5fc70b371c5/56.8198,-5.1052",
 		crossDomain: true,
 		 dataType: 'jsonp',
 		success: function(data){ 
@@ -160,16 +160,21 @@ function determineWeather() {
     Rain = ans[1]; 
     if (Rain){
       document.body.style.backgroundColor = "#6B7F98";
-      document.getElementById("percipitation").innerHTML = "Rain";
+      document.getElementById("sentence").innerHTML = "The Rain Will Stop In";
+      // document.getElementById("percipitation").innerHTML = "Rain";
       document.getElementById("weathericon").src =  "res/rain.png";
+      document.getElementById("minutesleft").innerHTML = minutes;
+      $("#centerf").show();
+      $("canvas")[0].show();
 
     }else {
       document.body.style.backgroundColor = "#FFA500";
       document.getElementById("sentence").innerHTML = "Not Currently Raining";
       document.getElementById("weathericon").src =  "res/Sunny.png";
-      document.getElementById("centerf").remove();
-      document.getElementsByTagName("canvas")[0].remove();
-      document.getElementById("minutesleft").innerHTML = minutes;
+
+      $("#centerf").hide();
+      $("canvas")[0].hide();
+      // document.getElementById("minutesleft").innerHTML = minutes;
 
  
 
