@@ -31,11 +31,18 @@
 <body>
 
 	<img id="background" src="syracuse.jpg" onload="loaded_image(this)" />
-	<div style="position: absolute; z-index: 1; left: 50px; top: 20px; width:150px; height:20px;" >
-		<p>Your Location is: </p>
-		<p style="color:black;" id="locationInfo"></p>
-		<p>Is this incorrect? Click here to change your location</p>
+	<div style="position: absolute; z-index: 1; left: 50px; bottom: 13vh; width:300px; height:20px;">
+	<div class = "row">
+		<div class="col-xs-10" >
+		<h2 style="color:white; opacity: 0.85;" id="locationInfo"></h2>
+	    </div>
+	    <div class="col-xs-2" >
+	    <img src = "res/help.png" style ="width: 25px; height: 25px; margin-top:20px; cursor: pointer;"  data-toggle="modal" data-target="#myModal" href=>
+	    </div>
+  	</div>
 	</div>
+
+
 <!--center>
 <div class="container-fluid" style="position: absolute; z-index: 1; left: 50px; top: 20px; width:100px; height:20px;" id='centerfold'>
   <h1 style="color:white; font-size:10vw;" id ='sentence'>The <span id='percipitation'>Snow</span> Will Stop in</h1>
@@ -56,6 +63,24 @@
 </div>
 </center !-->
 <div id="myCanvas" >
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+
 </body>
 <script>
 
